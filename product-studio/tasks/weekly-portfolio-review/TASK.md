@@ -2,6 +2,7 @@
 name: Weekly Portfolio Review
 description: Weekly operating cadence for resetting company priorities and handoffs
 assignee: ceo
+project: new-product-launch
 schedule:
   timezone: Europe/Paris
   startsAt: 2026-03-30T09:00:00+02:00
