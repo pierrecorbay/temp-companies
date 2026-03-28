@@ -6,7 +6,22 @@ This package is built for [Paperclip](https://github.com/paperclipai/paperclip) 
 
 - [paperclipai/companies](https://github.com/paperclipai/companies)
 - [Paperclip Beyond Defaults](https://autoedu.ai/resources/paperclip-customization-guide)
+- [paperclip-company-playbook](https://github.com/aronprins/paperclip-company-playbook/blob/main/README.md)
+
+## Core References
+
+Paperclip Forge is grounded in a small set of core platform, spec, skills, and company-design references:
+
+- [Paperclip README](https://github.com/paperclipai/paperclip/blob/master/README.md)
+- [Paperclip docs](https://docs.paperclip.ing/)
+- [Agent Companies](https://agentcompanies.io/)
+- [paperclipai/companies](https://github.com/paperclipai/companies/blob/main/README.md)
+- [Agent Skills](https://agentskills.io/)
+- [GStack](https://github.com/garrytan/gstack/blob/main/README.md)
 - [paperclip-company-playbook](https://github.com/aronprins/paperclip-company-playbook)
+- [Paperclip Beyond Defaults](https://autoedu.ai/resources/paperclip-customization-guide)
+
+For the full reference set used by this company, see `references/core-resources.md`.
 
 ## Workflow
 
