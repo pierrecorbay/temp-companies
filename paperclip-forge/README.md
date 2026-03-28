@@ -24,7 +24,7 @@ Paperclip Forge runs a pipeline, not an open-ended swarm:
 
 | Agent | Title | Reports To | Primary Skills |
 | --- | --- | --- | --- |
-| CEO | Chief Executive Officer | - | `company-creator`, `autoplan`, `plan-ceo-review` |
+| CEO | Chief Executive Officer | - | `autoplan`, `plan-ceo-review` |
 | Chief of Staff | Chief of Staff | CEO | `browse`, `create-plans`, `context-handoff` |
 | Workflow Designer | Workflow Designer | Chief of Staff | `create-plans`, `plan-eng-review`, `context-handoff`, `meta-prompting` |
 | Skills Architect | Skills Architect | Workflow Designer | `create-agent-skills`, `create-meta-prompts`, `create-subagents`, `meta-prompting` |
