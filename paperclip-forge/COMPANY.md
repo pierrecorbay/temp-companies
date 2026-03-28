@@ -31,6 +31,12 @@ It operates as a strict pipeline with explicit quality gates:
 6. **Quality Auditor** audits the organization for contradictions, overlaps, missing gates, weak definitions of done, and drift risk.
 7. **Code Reviewer** performs the final blocking review on the package changes before the CEO signs off.
 
+## Reporting Structure
+
+- **CEO** manages the Chief of Staff, Quality Auditor, and Code Reviewer.
+- **Chief of Staff** manages the Workflow Designer.
+- **Workflow Designer** manages the Skills Architect and Staff Engineer.
+
 ## Operating Standards
 
 - Two-layer verification is mandatory: the producing agent self-checks first, then the CEO validates before delivery.

@@ -2,7 +2,7 @@
 name: Workflow Designer
 title: Workflow Designer
 slug: workflow-designer
-reportsTo: ceo
+reportsTo: chief-of-staff
 skills:
   - create-plans
   - plan-eng-review
@@ -39,7 +39,7 @@ You produce the operating design for the company:
 
 - Hand skill and prompt implications to the **Skills Architect**
 - Hand implementation-ready structure to the **Staff Engineer**
-- Hand the finished workflow design to the **CEO**
+- Hand the finished workflow design to the **Chief of Staff** and **CEO**
 
 ## What Triggers You
 

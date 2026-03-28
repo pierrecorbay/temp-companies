@@ -26,9 +26,9 @@ Paperclip Forge runs a pipeline, not an open-ended swarm:
 | --- | --- | --- | --- |
 | CEO | Chief Executive Officer | - | `company-creator`, `autoplan`, `plan-ceo-review` |
 | Chief of Staff | Chief of Staff | CEO | `browse`, `create-plans`, `context-handoff` |
-| Workflow Designer | Workflow Designer | CEO | `create-plans`, `plan-eng-review`, `context-handoff`, `meta-prompting` |
-| Skills Architect | Skills Architect | CEO | `create-agent-skills`, `create-meta-prompts`, `create-subagents`, `meta-prompting` |
-| Staff Engineer | Staff Engineer | CEO | `company-creator`, `investigate`, `ship`, `document-release` |
+| Workflow Designer | Workflow Designer | Chief of Staff | `create-plans`, `plan-eng-review`, `context-handoff`, `meta-prompting` |
+| Skills Architect | Skills Architect | Workflow Designer | `create-agent-skills`, `create-meta-prompts`, `create-subagents`, `meta-prompting` |
+| Staff Engineer | Staff Engineer | Workflow Designer | `company-creator`, `investigate`, `ship`, `document-release` |
 | Quality Auditor | Quality Auditor | CEO | `review`, `qa`, `qa-only` |
 | Code Reviewer | Senior Code Reviewer | CEO | `pragmatic-code-review` |
 
@@ -41,6 +41,12 @@ Paperclip Forge runs a pipeline, not an open-ended swarm:
 - **Staff Engineer** writes or patches the actual package.
 - **Quality Auditor** looks for systemic problems, not style nits.
 - **Code Reviewer** runs the final blocking review before delivery.
+
+Reporting structure:
+
+- The CEO manages the Chief of Staff, Quality Auditor, and Code Reviewer.
+- The Chief of Staff manages the Workflow Designer.
+- The Workflow Designer manages the Skills Architect and Staff Engineer.
 
 ## Package Contents
 
