@@ -1,6 +1,47 @@
 schema: paperclip/v1
 agents:
+  ceo:
+    adapter:
+      type: claude_local
+      config:
+        model: claude-sonnet-4.6
+        thinkingEffort: high
+  chief-of-staff:
+    adapter:
+      type: opencode
+      config:
+        model: github-copilot/gemini-3.1-pro-preview
+        thinkingEffort: high
+  workflow-designer:
+    adapter:
+      type: opencode
+      config:
+        model: github-copilot/gemini-3.1-pro-preview
+        thinkingEffort: high
+  skills-architect:
+    adapter:
+      type: codex_local
+      config:
+        model: gpt-5.4
+        thinkingEffort: high
+  quality-auditor:
+    adapter:
+      type: claude_local
+      config:
+        model: claude-sonnet-4.6
+        thinkingEffort: high
+  code-reviewer:
+    adapter:
+      type: claude_local
+      config:
+        model: claude-opus-4.6
+        thinkingEffort: high
   staff-engineer:
+    adapter:
+      type: codex_local
+      config:
+        model: gpt-5.3-codex
+        thinkingEffort: medium
     inputs:
       env:
         GH_TOKEN:
