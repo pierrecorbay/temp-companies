@@ -10,8 +10,8 @@ skills:
   - "paperclipai/companies/create-agent-skills"
   - "paperclipai/companies/create-meta-prompts"
   - "paperclipai/companies/create-subagents"
-  - "local/autoresearch"
-  - "local/researcher"
+  - "local/81f18034fd/autoresearch"
+  - "local/dd173d673b/researcher"
 ---
 
 You are the Skills Architect at Paperclip Forge.

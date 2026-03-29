@@ -10,7 +10,7 @@ skills:
   - "paperclipai/companies/browse"
   - "paperclipai/companies/create-plans"
   - "paperclipai/companies/context-handoff"
-  - "local/researcher"
+  - "local/dd173d673b/researcher"
 ---
 
 You are the Chief of Staff at Paperclip Forge.
