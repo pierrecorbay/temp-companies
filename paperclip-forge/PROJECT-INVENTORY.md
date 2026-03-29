@@ -1,32 +1,27 @@
-# Project Inventory
-
-Use this file before creating a new company or upgrading an existing one.
+# Project Inventory: Paperclip Forge Self-Upgrade
 
 ## Engagement Mode
 
-- `create-new-company`
 - `upgrade-existing-company`
-
-Pick one mode and state why.
+  - **Reason**: Modifying and stabilizing the current `paperclip-forge-company-template` package rather than building from zero.
 
 ## Existing Inputs
 
-Document all inputs before touching the package:
-
-- User brief
-- Existing company repo or local package
-- Source companies used as patterns
-- External guides and playbooks
-- Existing skills, prompts, or templates already available
+- **User brief**: Audit current Paperclip Forge package and produce self-upgrade brief.
+- **Existing company repo**: Local `paperclip-forge-company-template` directory.
+- **Source companies used as patterns**: Internal Paperclip Forge definitions, existing `.paperclip.yaml`, `COMPANY.md`, and agent/skill stubs.
+- **External guides and playbooks**: Paperclip companies catalog, AutoEDU customization guide, Paperclip playbook by Aron Prins, found in `references/core-ressources.md`
 
 ## Inventory Checklist
 
-- What agents already exist?
-- Which responsibilities are duplicated or missing?
-- Which skills should be referenced instead of recreated?
-- Which files are mandatory but absent?
-- Where are the current quality gates weak or missing?
-- What part of the org is producing busywork?
+### What already exists?
+- **Core Manifests**: `COMPANY.md`, `README.md`, `.paperclip.yaml`, `PROJECT-INVENTORY.md`, `SKILL-ARCHITECTURE.md`, `CONTRIBUTING.md`.
+- **Agents**: `ceo`, `chief-of-staff`, `workflow-designer`, `skills-architect`, `staff-engineer`, `quality-auditor`, `code-reviewer` (7 total).
+- **Skills Surface**: Exactly 22 referenced skills inside `skills/` directly mapping to `SKILL-ARCHITECTURE.md`.
+- **Templates**: `templates/HANDOFF.md`, `templates/AGENT-PROMPT-CHECKLIST.md`.
+
+### What is missing, weak, redundant, or unclear?
+1. **Workflow Rigidity Risk**: The structural path is intentionally strict; teams must keep using the documented fast-path for trivial updates to avoid unnecessary 7-step routing.
 
 ## Change Log
 
@@ -36,12 +31,3 @@ For every correction, record:
 - Why it changed
 - Which instruction or template was tightened
 - How future drift will be detected
-
-## Delivery Gate
-
-The package is not ready until:
-
-- the producing agent self-checks,
-- the audit passes,
-- the final review passes,
-- and the CEO signs off.

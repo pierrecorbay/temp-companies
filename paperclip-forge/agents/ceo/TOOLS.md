@@ -12,5 +12,4 @@ Delegation rules:
 - Workflow structure goes to the Workflow Designer
 - Skill and prompt architecture goes to the Skills Architect
 - Package implementation goes to the Staff Engineer
-- Structural coherence goes to the Quality Auditor
-- Final blocking review goes to the Code Reviewer
+- Structural audit goes to the Quality Auditor; final blocking review goes to the Code Reviewer

@@ -1,49 +1,78 @@
-schema: paperclip/v1
+schema: "paperclip/v1"
 agents:
   ceo:
+    icon: "crown"
+    capabilities: "Decides whether to create, upgrade, or reject a company engagement, and acts as the final quality gate before delivery."
     adapter:
-      type: claude_local
       config:
-        model: claude-sonnet-4.6
-        thinkingEffort: high
+        effort: "high"
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    permissions:
+      canCreateAgents: true
   chief-of-staff:
+    icon: "hexagon"
+    capabilities: "Turns a raw brief, repo, and source materials into a clear intake packet, project inventory, and execution brief."
     adapter:
-      type: opencode
       config:
-        model: github-copilot/gemini-3.1-pro-preview
-        thinkingEffort: high
-  workflow-designer:
-    adapter:
-      type: opencode
-      config:
-        model: github-copilot/gemini-3.1-pro-preview
-        thinkingEffort: high
-  skills-architect:
-    adapter:
-      type: codex_local
-      config:
-        model: gpt-5.4
-        thinkingEffort: high
-  quality-auditor:
-    adapter:
-      type: claude_local
-      config:
-        model: claude-sonnet-4.6
-        thinkingEffort: high
+        dangerouslyBypassApprovalsAndSandbox: true
+        model: "gpt-5.4"
+        modelReasoningEffort: "medium"
+      type: "codex_local"
+    permissions:
+      canCreateAgents: true
   code-reviewer:
+    icon: "eye"
+    capabilities: "Performs the final blocking review on company changes and decides whether the package is ready for CEO signoff."
     adapter:
-      type: claude_local
       config:
-        model: claude-opus-4.6
-        thinkingEffort: high
+        effort: "high"
+        model: "claude-opus-4-6"
+      type: "claude_local"
+  quality-auditor:
+    icon: "shield"
+    capabilities: "Audits the package for structural gaps, contradictions, weak handoffs, and missing governance before final review."
+    adapter:
+      config:
+        effort: "high"
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+  skills-architect:
+    icon: "brain"
+    capabilities: "Defines the company’s skill map, prompt conventions, templates, and anti-drift capability rules."
+    adapter:
+      config:
+        dangerouslyBypassApprovalsAndSandbox: true
+        model: "gpt-5.4"
+        modelReasoningEffort: "high"
+      type: "codex_local"
   staff-engineer:
+    icon: "code"
+    capabilities: "Builds or patches the actual company package, including manifests, agent files, docs, and referenced skills."
     adapter:
-      type: codex_local
       config:
-        model: gpt-5.3-codex
-        thinkingEffort: medium
-    inputs:
-      env:
-        GH_TOKEN:
-          kind: secret
-          requirement: optional
+        dangerouslyBypassApprovalsAndSandbox: true
+        model: "gpt-5.4"
+        modelReasoningEffort: "medium"
+      type: "codex_local"
+  workflow-designer:
+    icon: "target"
+    capabilities: "Designs the org structure, reporting lines, handoffs, mandatory files, and quality gates that make the company operable."
+    adapter:
+      config:
+        dangerouslyBypassApprovalsAndSandbox: true
+        model: "gpt-5.4"
+        modelReasoningEffort: "medium"
+      type: "codex_local"
+company:
+  brandColor: "#3a8bf7"
+  logoPath: "images/company-logo.png"
+sidebar:
+  agents:
+    - "ceo"
+    - "chief-of-staff"
+    - "code-reviewer"
+    - "quality-auditor"
+    - "workflow-designer"
+    - "skills-architect"
+    - "staff-engineer"
