@@ -1,8 +1,72 @@
 schema: paperclip/v1
 agents:
+  ceo:
+    icon: crown
+    heartbeatIntervalMinutes: 60
+    capabilities: "Turns raw requests into scoped product briefs, resets priorities, and decides when scope changes require re-framing. Runs autoplan to fast-track combined CEO, design, and eng review in one pass."
+    adapter:
+      type: claude_local
+      config:
+        model: claude-sonnet-4-6
+        effort: high
+    permissions:
+      canCreateAgents: true
+  senior-designer:
+    icon: sparkles
+    heartbeatIntervalMinutes: 120
+    capabilities: "Owns experience specs and the frontend or design-system slice during the paired build stage."
+    adapter:
+      type: claude_local
+      config:
+        model: claude-sonnet-4-6
+        effort: high
+  cto:
+    icon: cpu
+    heartbeatIntervalMinutes: 60
+    capabilities: "Locks the technical execution plan, opens the paired build stage, and routes post-build follow-up. Runs autoplan for multi-lens plan validation before committing to build."
+    adapter:
+      type: claude_local
+      config:
+        model: claude-sonnet-4-6
+        effort: high
+  product-engineer:
+    icon: code
+    heartbeatIntervalMinutes: 120
+    capabilities: "Owns backend, app logic, and integration implementation on the shared review target."
+    adapter:
+      type: codex_local
+      config:
+        model: gpt-5.4
+        modelReasoningEffort: high
+  staff-engineer:
+    icon: wrench
+    heartbeatIntervalMinutes: 120
+    capabilities: "Runs the structural review gate on the shared build artifact and issues an approve-or-fix verdict."
+    adapter:
+      type: codex_local
+      config:
+        model: gpt-5.4
+        modelReasoningEffort: high
   release-engineer:
+    icon: rocket
+    heartbeatIntervalMinutes: 120
+    capabilities: "Lands approved work, completes the deploy flow, and hands QA the exact release target plus risks."
+    adapter:
+      type: codex_local
+      config:
+        model: gpt-5.4
+        modelReasoningEffort: medium
     inputs:
       env:
         GH_TOKEN:
           kind: secret
           requirement: optional
+  qa-engineer:
+    icon: bug
+    heartbeatIntervalMinutes: 120
+    capabilities: "Runs post-ship verification, visual QA, and performance checks, then returns a pass or fail report to CTO."
+    adapter:
+      type: claude_local
+      config:
+        model: claude-sonnet-4-6
+        effort: high

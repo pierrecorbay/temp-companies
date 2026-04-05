@@ -1,24 +1,26 @@
 # Product Studio
 
-> Lean engineering company powered by gstack workflow skills — distinct cognitive modes for product vision, design critique, technical planning, implementation, security auditing, code review, shipping, deployment, and QA
+> Lean engineering company powered by gstack workflow skills — distinct cognitive modes for product vision, design critique, technical planning, paired implementation, structural review, release, and QA
 
-> An [Agent Company](https://agentcompanies.io) based on [gstack](https://github.com/garrytan/gstack) — engineering workflow skills for headless browsing, QA testing, PR review, shipping, retrospectives, and plan reviews
+> An [Agent Company](https://agentcompanies.io) based on [gstack](https://github.com/garrytan/gstack) with a tighter local runtime surface for paired build handoffs, shared workflow memory, and reusable starter templates
 
 ## What's Inside
 
 | Content | Count |
 | ------- | ----- |
 | Agents  | 7     |
-| Skills  | 22    |
+| Skills  | 25    |
+
+The package also includes the lean runtime docs and local capability assets Product Studio needs to start work without guessing: root `BOOTSTRAP.md`, root `CONTRIBUTING.md`, root `SKILL-ARCHITECTURE.md`, `.paperclip.yaml`, shared `memory/`, canonical `templates/`, and one role-contract bundle (`AGENTS.md`, `HEARTBEAT.md`, `TOOLS.md`) for each agent.
 
 ### Agents
 
 | Agent            | Role     | Reports To | Core Skills                                                                                |
 | ---------------- | -------- | ---------- | ------------------------------------------------------------------------------------------ |
-| CEO              | CEO      | -          | `office-hours`, `plan-ceo-review`                                                          |
+| CEO              | CEO      | -          | `office-hours`, `plan-ceo-review`, `autoplan`                                              |
 | Senior Designer  | Designer | `ceo`      | `design-consultation`, `plan-design-review`, `design-review`, `browse`                     |
-| CTO              | CTO      | `ceo`      | `plan-eng-review`, `cso`, `retro`                                                          |
-| Product Engineer | Engineer | `cto`      | `investigate`, `codex`, `guard`                                                            |
+| CTO              | CTO      | `ceo`      | `plan-eng-review`, `cso`, `retro`, `autoplan`, `find-docs`                                 |
+| Product Engineer | Engineer | `cto`      | `investigate`, `codex`, `guard`, `find-docs`, `researcher`                                 |
 | Staff Engineer   | Engineer | `cto`      | `review`, `investigate`, `codex`                                                           |
 | Release Engineer | Engineer | `cto`      | `ship`, `land-and-deploy`, `document-release`, `setup-deploy`                              |
 | QA Engineer      | Engineer | `cto`      | `browse`, `qa`, `qa-only`, `benchmark`, `canary`, `design-review`, `setup-browser-cookies` |
@@ -27,6 +29,7 @@
 
 | Skill                 | Description                                                                                       | Source                                                                                |
 | --------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| autoplan              | Fully automated review pipeline — CEO, design, and eng reviews in one pass with auto-decisions.   | [github](https://github.com/garrytan/gstack/blob/main/autoplan/SKILL.md)              |
 | benchmark             | Performance regression detection — TTFB, FCP, LCP, bundle sizes, request counts.                  | [github](https://github.com/garrytan/gstack/blob/main/benchmark/SKILL.md)             |
 | browse                | Headless Chromium CLI for QA testing and site dogfooding.                                         | [github](https://github.com/garrytan/gstack/blob/main/SKILL.md)                       |
 | canary                | Post-deploy monitoring — watches live app for console errors, perf regressions, visual anomalies. | [github](https://github.com/garrytan/gstack/blob/main/canary/SKILL.md)                |
@@ -55,22 +58,24 @@
 Product Studio uses a tight pipeline with explicit handoffs:
 
 1. The `CEO` turns raw requests into a product brief with scope, user value, and success criteria.
-2. The `Senior Designer` converts the brief into user flows, interface states, design-system direction.
-3. The `CTO` turns the experience spec into a technical execution plan with architecture, risk controls, and test coverage.
-4. The `Product Engineer` implements the feature and prepares a reviewable branch.
-5. The `Staff Engineer` performs structural review and either approves the branch or sends it back with concrete fixes.
-6. The `Release Engineer` ships the approved branch and closes release-documentation work.
-7. The `QA Engineer` verifies the shipped experience, performance, and visual quality, then reports pass/fail status back to the CTO.
+2. The `Senior Designer` converts the brief into user flows, interface states, and design-system direction.
+3. The `CTO` turns the brief plus experience spec into a technical execution plan with architecture, ownership boundaries, risk controls, and test coverage.
+4. The paired build stage opens: `Senior Designer` owns frontend, UI behavior, and design-system implementation while `Product Engineer` owns backend, app logic, and integration on one shared review target.
+5. The `Staff Engineer` performs structural review and either approves the shared build artifact or sends it back with concrete fixes.
+6. The `Release Engineer` ships the approved work and closes release-documentation work.
+7. The `QA Engineer` verifies the shipped experience, performance, and visual quality, then reports pass/fail status back to the `CTO`.
+
+Fallback coverage exists only to preserve routing continuity. `CTO` backs `Senior Designer`, `Product Engineer`, `Staff Engineer`, `Release Engineer`, and `QA Engineer`. `CEO` backs `CTO`. These fallbacks do not waive any gates.
 
 ### Roles
 
 `CEO` owns product framing and scope decisions.
 
-`Senior Designer` owns UX direction, design-system decisions, and interaction states.
+`Senior Designer` owns UX direction, design-system decisions, and the frontend slice during the paired build stage.
 
-`CTO` owns architecture, delivery planning, technical risk, and engineering orchestration.
+`CTO` owns architecture, delivery planning, technical risk, and the paired-build ownership split.
 
-`Product Engineer` owns implementation of the approved product and prepares code for review.
+`Product Engineer` owns backend, app logic, and integration implementation on the shared review target.
 
 `Staff Engineer` owns the hard structural review gate before release.
 
@@ -82,9 +87,19 @@ Product Studio uses a tight pipeline with explicit handoffs:
 
 The package includes:
 
-- One reusable project: `new-product-launch`
-- Five starter project tasks that mirror the company pipeline
-- One recurring weekly portfolio review task for the CEO
+- One reusable project template: `templates/projects/new-product-launch`
+- One recurring weekly portfolio review task template in `templates/tasks/weekly-portfolio-review`
+- One engineering team scaffold in `teams/engineering/TEAM.md`
+
+## Runtime Surface
+
+Product Studio's required local runtime surface is:
+
+- Root docs: `COMPANY.md`, `README.md`, `BOOTSTRAP.md`, `CONTRIBUTING.md`, `SKILL-ARCHITECTURE.md`, `.paperclip.yaml`
+- Role bundles: `agents/<role>/AGENTS.md`, `agents/<role>/HEARTBEAT.md`, `agents/<role>/TOOLS.md`
+- Shared memory: `memory/session-history.md`, `memory/decisions.md`
+- Canonical templates: `templates/HANDOFF.md`, `templates/AGENT-PROMPT-CHECKLIST.md`, `templates/projects/**`, `templates/tasks/**`
+- Capability assets: `skills/**`
 
 ## References
 
@@ -95,5 +110,7 @@ The package includes:
 ## Getting Started
 
 ```bash
-paperclipai company import --from /Users/pierrecorbay/Paperclip/companies/product-studio
+paperclipai company import --from /path/to/product-studio
 ```
+
+After import, read `BOOTSTRAP.md`, then `COMPANY.md`, then the active role bundle under `agents/<role>/`.

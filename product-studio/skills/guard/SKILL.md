@@ -8,7 +8,7 @@ metadata:
     - kind: github-file
       repo: garrytan/gstack
       path: guard/SKILL.md
-      commit: f4bbfaa5bdfd2d6ce59541c2145432febde57fed
+      commit: bd8d44d64175a839f553ad0b023bd9d774bb73a7
       attribution: Garry Tan
       license: MIT
       usage: referenced
